@@ -3,7 +3,6 @@ import requests
 import pprint
 import os
 from dotenv import load_dotenv
-import sched, time
 import discord
 import asyncio
 from discord.ext import tasks
@@ -15,9 +14,7 @@ discord_token = os.getenv('DISCORD_TOKEN')
 bearer_token = os.getenv('API_CREDENTIALS')
 server_id = os.getenv('DISCORD_SERVER_ID')
 channel_id = os.getenv('DISCORD_CHANNEL_ID')
-endpoint = "https://api-admin.prod.entelectchallenge.co.za/v1/admin/hackathon/full-leaderboard/university"
-headers = {"Authorization": bearer_token }
-s = sched.scheduler(time.time, time.sleep)
+endpoint = "https://api.prod.entelectchallenge.co.za/v1/hackathon/leaderboard/university"
 previous_leader_score = None
 previous_leader_key = None
 
@@ -31,7 +28,7 @@ async def main():
     async def poll_leaderboard(): 
         global previous_leader_key
         global previous_leader_score
-        json_file = requests.get(endpoint, headers=headers).json()
+        json_file = requests.get(endpoint).json()
 
         json_file = json.dumps(json_file)
 
