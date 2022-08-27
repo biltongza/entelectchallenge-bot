@@ -11,7 +11,6 @@ load_dotenv()
 intents = discord.Intents.default()
 client = discord.Client(intents=intents)
 discord_token = os.getenv('DISCORD_TOKEN')
-bearer_token = os.getenv('API_CREDENTIALS')
 server_id = os.getenv('DISCORD_SERVER_ID')
 channel_id = os.getenv('DISCORD_CHANNEL_ID')
 endpoint = "https://api.prod.entelectchallenge.co.za/v1/hackathon/leaderboard/university"
